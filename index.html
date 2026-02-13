@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forever Us 👑💘</title>
+<title>Will You Be My Valentine? 👑💘</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
 
@@ -29,14 +29,29 @@ body {
 
 .container {
   background: rgba(255,255,255,0.25);
-  padding: 40px;
+  padding: 40px 30px;
   border-radius: 20px;
   text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   backdrop-filter: blur(10px);
 }
 
-h1 { color: white; font-size: 3em; animation: heartbeat 1.4s infinite; }
-@keyframes heartbeat { 0%,100%{transform:scale(1);} 50%{transform:scale(1.15);} }
+h1 {
+  color: white;
+  font-size: 3em;
+  animation: heartbeat 1.4s infinite;
+}
+
+@keyframes heartbeat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+p {
+  color: #fff;
+  font-size: 1.6em;
+  margin-bottom: 30px;
+}
 
 button {
   padding: 14px 30px;
@@ -51,12 +66,12 @@ button {
 
 #yesBtn { background: #ff006e; }
 #noBtn { background: #999; }
-#muteBtn { background: #ff7eb9; }
+#muteBtn { background: #ff7eb9; font-size: 1em; padding: 8px 15px; }
 
 button:hover { transform: scale(1.1); }
 
-/* Popup Style */
-.popup {
+/* Romantic Glowing Popup */
+#popup {
   display: none;
   position: fixed;
   top: 50%;
@@ -64,92 +79,211 @@ button:hover { transform: scale(1.1); }
   transform: translate(-50%, -50%);
   background: linear-gradient(135deg, #ff006e, #ff4d6d, #ff8fab);
   padding: 35px;
-  border-radius: 30px;
+  border-radius: 25px;
   text-align: center;
-  width: 90%;
-  max-width: 450px;
-  z-index: 200;
-  box-shadow: 0 0 60px rgba(255,0,110,0.9);
+  width: 85%;
+  max-width: 420px;
+  z-index: 100;
+  box-shadow: 0 0 30px rgba(255, 0, 110, 0.8);
   border: 3px solid white;
+  animation: popupGlow 2s infinite alternate;
 }
 
-.popup h2 { color: white; }
-.popup div { color: white; white-space: pre-line; min-height: 180px; }
-.popup button { background:#ff7eb9; margin-top:20px; }
-
-/* Ring Sparkle */
-.ring {
-  font-size: 60px;
-  margin-top: 20px;
-  animation: sparkle 1.5s infinite alternate;
+@keyframes popupGlow {
+  from { box-shadow: 0 0 20px #ff4d6d; }
+  to { box-shadow: 0 0 40px #ff006e; }
 }
 
-@keyframes sparkle {
-  from { transform: scale(1); text-shadow: 0 0 10px gold; }
-  to { transform: scale(1.2); text-shadow: 0 0 30px gold; }
-}
+#popup h2 { color: white; font-size: 2.2em; }
+#typedText { font-size: 1.2em; color: white; min-height: 160px; white-space: pre-line; }
+#closeBtn { background: #ff7eb9; margin-top: 20px; }
 
-/* Rose Petals */
-.petal {
+/* SECOND POPUP */
+#popup2 {
+  display: none;
   position: fixed;
-  top: -20px;
-  font-size: 24px;
-  animation: fall linear forwards;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, #ff4d6d, #ff8fab, #ffc2d1);
+  padding: 35px;
+  border-radius: 25px;
+  text-align: center;
+  width: 85%;
+  max-width: 420px;
+  z-index: 150;
+  box-shadow: 0 0 40px rgba(255, 105, 180, 0.9);
+  border: 3px solid white;
+  animation: popupGlow 2s infinite alternate;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+#popup2 h2 { color: white; font-size: 2em; }
+#typedText2 { font-size: 1.2em; color: white; min-height: 200px; white-space: pre-line; }
+#finalCloseBtn { background: #ff006e; margin-top: 20px; }
+
+/* Screen Flash */
+#flash {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:white;
+  opacity:0;
+  pointer-events:none;
+  z-index:200;
 }
+
+.flash-animate {
+  animation: flashEffect 0.4s ease-out;
+}
+
+@keyframes flashEffect {
+  0% { opacity:1; }
+  100% { opacity:0; }
+}
+
+/* Heart Firework */
+.firework-heart {
+  position: absolute;
+  font-size: 22px;
+  pointer-events: none;
+  animation: explode 1.2s ease-out forwards;
+}
+
+@keyframes explode {
+  0% { transform: translate(0,0) scale(1); opacity:1; }
+  100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity:0; }
+}
+
+/* Floating Hearts */
+.heart {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: hotpink;
+  transform: rotate(-45deg);
+  animation: float 4s linear infinite;
+  box-shadow: 0 0 15px hotpink;
+}
+
+.heart::before, .heart::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  background: hotpink;
+  border-radius: 50%;
+  position: absolute;
+  box-shadow: 0 0 15px hotpink;
+}
+
+.heart::before { top: -7px; }
+.heart::after { left: 7px; }
+
+@keyframes float {
+  from { transform: translateY(0) rotate(-45deg); opacity: 1; }
+  to { transform: translateY(-500px) rotate(-45deg); opacity: 0; }
+}
+
+/* Golden Sparkles */
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: gold;
+  border-radius: 50%;
+  box-shadow: 0 0 10px gold;
+  animation: sparkleFall linear infinite;
+}
+
+@keyframes sparkleFall {
+  from { transform: translateY(-10px); opacity: 1; }
+  to { transform: translateY(100vh); opacity: 0; }
+}
+
+canvas { position: fixed; top: 0; left: 0; pointer-events: none; }
 </style>
 </head>
-
 <body>
+
+<div id="flash"></div>
+
+<audio id="bgMusic" loop>
+  <source src="https://raw.githubusercontent.com/ank0809/Rose-day/db84e1f74fdef01c0b62ff2576ba8055b5e57e6e/Mere%20Naam%20Tu%20Instrumental%20Ringtone%20Download%20Pagalworld%20(mp3cut.net).mp3" type="audio/mpeg">
+</audio>
+
+<audio id="fireworkSound">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b48f5e61c.mp3?filename=firework-explosion-9974.mp3" type="audio/mpeg">
+</audio>
 
 <div class="container">
   <h1>Happy Valentine’s Day 👑❤️</h1>
+  <p id="mainText">Will you be my Valentine, My Princess? 💘</p>
   <button id="yesBtn">Yes 💕</button>
   <button id="noBtn">No 🙈</button><br>
   <button id="muteBtn">Mute/Unmute 🎵</button>
 </div>
 
-<!-- First Popup -->
-<div id="popup1" class="popup">
+<div id="popup">
   <h2>She Said YES 👑💖</h2>
-  <div id="typed1"></div>
-  <button id="toPromise">Forever Yours ❤️</button>
+  <div id="typedText"></div>
+  <button id="closeBtn">Forever Yours ❤️</button>
 </div>
 
-<!-- Promise Popup -->
-<div id="popup2" class="popup">
-  <h2>My Forever Promise 💍❤️</h2>
-  <div id="typed2"></div>
-  <div id="ringContainer"></div>
+<div id="popup2">
+  <h2>Forever Begins Here 💍✨</h2>
+  <div id="typedText2"></div>
+  <button id="finalCloseBtn">My Always ❤️</button>
 </div>
+
+<canvas id="confetti"></canvas>
 
 <script>
 const yesBtn = document.getElementById("yesBtn");
-const popup1 = document.getElementById("popup1");
+const noBtn = document.getElementById("noBtn");
+const popup = document.getElementById("popup");
 const popup2 = document.getElementById("popup2");
-const typed1 = document.getElementById("typed1");
-const typed2 = document.getElementById("typed2");
-const ringContainer = document.getElementById("ringContainer");
+const typedText = document.getElementById("typedText");
+const typedText2 = document.getElementById("typedText2");
+const bgMusic = document.getElementById("bgMusic");
+const fireworkSound = document.getElementById("fireworkSound");
+const muteBtn = document.getElementById("muteBtn");
+const flash = document.getElementById("flash");
 
-const message1 = `My Princess 👑💖
+const noMessages = [
+  "Are you sure? 🥺",
+  "Really sure? 👀",
+  "Think again Princess 👑",
+  "You deserve royal love 💖",
+  "Only YES suits a Queen 👑"
+];
+
+let clickCount = 0;
+
+const message = `My Princess 👑💖
 
 From the moment you came into my life,
 everything became softer and brighter ✨
+
+You don’t just look beautiful…
+you carry grace in your smile,
+magic in your eyes,
+and peace in your presence 🤍
+
+You deserve flowers without reason 🌹
+forehead kisses without asking 💋
+and a love that feels safe and royal.
+
+Being your Valentine
+is not just a day…
+it’s an honor 👑💘
 
 And I will keep choosing you —
 today,
 tomorrow,
 and always 🤍`;
 
-const promiseMessage = `My Sweetheart 🫠❤️
-
-Thank you so much for everything, my love…
+const message2 = `Thank you so much for everything, my love…
 
 I promise you —
 no matter what situation comes,
@@ -170,52 +304,152 @@ and great fortune 💍✨
 
 Forever yours ❤️`;
 
-yesBtn.onclick = () => {
-  popup1.style.display = "block";
-  typeText(message1, typed1);
+document.body.addEventListener("click", () => {
+  bgMusic.play().catch(()=>{});
+}, { once: true });
+
+muteBtn.onclick = () => {
+  bgMusic.muted = !bgMusic.muted;
+  muteBtn.textContent = bgMusic.muted ? "Unmute 🎵" : "Mute 🎵";
 };
 
-document.getElementById("toPromise").onclick = () => {
-  popup1.style.display="none";
-  popup2.style.display="block";
-  typeText(promiseMessage, typed2, true);
+yesBtn.onclick = openPopup;
+
+noBtn.onclick = () => {
+  if (clickCount < noMessages.length - 1) {
+    noBtn.textContent = noMessages[clickCount];
+    clickCount++;
+  } else {
+    noBtn.textContent = "Yes 👑💖";
+    noBtn.style.background = "#ff006e";
+    noBtn.onclick = openPopup;
+  }
 };
 
-function typeText(text, element, isPromise=false) {
-  element.textContent="";
-  let i=0;
-  const interval=setInterval(()=>{
-    element.textContent+=text[i];
+function openPopup() {
+  flash.classList.add("flash-animate");
+  setTimeout(()=> flash.classList.remove("flash-animate"),400);
+
+  fireworkSound.currentTime = 0;
+  fireworkSound.play();
+
+  setTimeout(() => {
+    heartFireworkExplosion();
+  }, 200);
+
+  popup.style.display = "block";
+  startTyping();
+  startConfetti();
+  yesBtn.style.display = "none";
+  noBtn.style.display = "none";
+}
+
+function startTyping() {
+  typedText.textContent = "";
+  let i = 0;
+  const interval = setInterval(() => {
+    typedText.textContent += message[i];
     i++;
-    if(i>=text.length){
-      clearInterval(interval);
-      if(isPromise){
-        showRing();
-        startPetals();
-      }
-    }
-  },35);
+    if (i >= message.length) clearInterval(interval);
+  }, 40);
 }
 
-function showRing(){
-  const ring=document.createElement("div");
-  ring.className="ring";
-  ring.textContent="💍";
-  ringContainer.appendChild(ring);
+document.getElementById("closeBtn").onclick = () => {
+  popup.style.display = "none";
+  openSecondPopup();
+};
+
+function openSecondPopup() {
+  popup2.style.display = "block";
+  startTyping2();
 }
 
-function startPetals(){
-  setInterval(()=>{
-    const petal=document.createElement("div");
-    petal.className="petal";
-    petal.textContent="🌹";
-    petal.style.left=Math.random()*window.innerWidth+"px";
-    petal.style.animationDuration=5+Math.random()*3+"s";
-    document.body.appendChild(petal);
-    setTimeout(()=>petal.remove(),8000);
-  },400);
+function startTyping2() {
+  typedText2.textContent = "";
+  let i = 0;
+  const interval = setInterval(() => {
+    typedText2.textContent += message2[i];
+    i++;
+    if (i >= message2.length) clearInterval(interval);
+  }, 40);
 }
+
+document.getElementById("finalCloseBtn").onclick = () => {
+  popup2.style.display = "none";
+};
+
+function heartFireworkExplosion() {
+  const centerX = window.innerWidth / 2;
+  const centerY = window.innerHeight / 2;
+
+  for (let i = 0; i < 50; i++) {
+    const heart = document.createElement("div");
+    heart.className = "firework-heart";
+    heart.textContent = "💖";
+
+    const angle = Math.random() * 2 * Math.PI;
+    const radius = Math.random() * 250 + 50;
+
+    heart.style.left = centerX + "px";
+    heart.style.top = centerY + "px";
+    heart.style.setProperty("--x", Math.cos(angle) * radius + "px");
+    heart.style.setProperty("--y", Math.sin(angle) * radius + "px");
+
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 1200);
+  }
+}
+
+/* Confetti */
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let confetti = [];
+
+function startConfetti() {
+  confetti = Array.from({length: 120}, () => ({
+    x: Math.random()*canvas.width,
+    y: Math.random()*canvas.height,
+    r: Math.random()*5+2,
+    d: Math.random()*5,
+    c: `hsl(${Math.random()*360},100%,50%)`
+  }));
+  drawConfetti();
+}
+
+function drawConfetti() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  confetti.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle = p.c;
+    ctx.fill();
+    p.y += p.d;
+    if(p.y>canvas.height) p.y=0;
+  });
+  requestAnimationFrame(drawConfetti);
+}
+
+/* Floating hearts */
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.style.left = Math.random()*window.innerWidth+"px";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),4000);
+},300);
+
+/* Golden Sparkles */
+setInterval(() => {
+  const s = document.createElement("div");
+  s.className = "sparkle";
+  s.style.left = Math.random()*window.innerWidth+"px";
+  s.style.animationDuration = 5 + Math.random()*5 + "s";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),10000);
+},400);
+
 </script>
-
 </body>
 </html>
