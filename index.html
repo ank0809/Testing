@@ -289,10 +289,37 @@ muteBtn.onclick = () => {
 
 yesBtn.onclick = openPopup;
 
+const noMessages = [
+  "Are you sure? 🥺",
+  "Think again 💭",
+  "Don’t break my heart 💔",
+  "I’ll be sad 😞",
+  "Really really sure? 😶",
+  "Okay but… why 😢",
+  "Think again 💭",
+  "That click hurt a little 💔",
+  "Please reconsider 😞",
+  "I’ll wait 😐",
+  "Still no? 😶",
+  "Fine… only YES remains 💖"
+];
+
+let noClickCount = 0;
+
 noBtn.onclick = () => {
-  noBtn.textContent = "Yes 👑💖";
-  noBtn.style.background = "#ff006e";
-  noBtn.onclick = openPopup;
+
+  if (noClickCount < noMessages.length - 1) {
+    noBtn.textContent = noMessages[noClickCount];
+    noClickCount++;
+
+    yesBtn.style.transform = `scale(${1 + noClickCount * 0.1})`;
+
+  } else {
+    noBtn.textContent = "Yes 💖";
+    noBtn.style.background = "#ff006e";
+    noBtn.onclick = openPopup;
+  }
+
 };
 
 function openPopup() {
