@@ -8,6 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
 
 <style>
+
+/* ============================= */
+/* BODY */
+/* ============================= */
+
 body {
   margin: 0;
   height: 100vh;
@@ -26,6 +31,10 @@ body {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* ============================= */
+/* MAIN CONTAINER */
+/* ============================= */
 
 .container {
   background: rgba(255,255,255,0.25);
@@ -70,23 +79,34 @@ button {
 
 button:hover { transform: scale(1.1); }
 
-/* Romantic Glowing Popup */
-#popup {
+/* ============================= */
+/* POPUPS */
+/* ============================= */
+
+#popup, #popup2 {
   display: none;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: linear-gradient(135deg, #ff006e, #ff4d6d, #ff8fab);
   padding: 35px;
   border-radius: 25px;
   text-align: center;
   width: 85%;
   max-width: 420px;
-  z-index: 100;
-  box-shadow: 0 0 30px rgba(255, 0, 110, 0.8);
+  z-index: 150;
   border: 3px solid white;
   animation: popupGlow 2s infinite alternate;
+}
+
+#popup {
+  background: linear-gradient(135deg, #ff006e, #ff4d6d, #ff8fab);
+  box-shadow: 0 0 30px rgba(255, 0, 110, 0.8);
+}
+
+#popup2 {
+  background: linear-gradient(135deg, #ff4d6d, #ff8fab, #ffc2d1);
+  box-shadow: 0 0 40px rgba(255, 105, 180, 0.9);
 }
 
 @keyframes popupGlow {
@@ -94,34 +114,20 @@ button:hover { transform: scale(1.1); }
   to { box-shadow: 0 0 40px #ff006e; }
 }
 
-#popup h2 { color: white; font-size: 2.2em; }
-#typedText { font-size: 1.2em; color: white; min-height: 160px; white-space: pre-line; }
-#closeBtn { background: #ff7eb9; margin-top: 20px; }
-
-/* SECOND POPUP */
-#popup2 {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: linear-gradient(135deg, #ff4d6d, #ff8fab, #ffc2d1);
-  padding: 35px;
-  border-radius: 25px;
-  text-align: center;
-  width: 85%;
-  max-width: 420px;
-  z-index: 150;
-  box-shadow: 0 0 40px rgba(255, 105, 180, 0.9);
-  border: 3px solid white;
-  animation: popupGlow 2s infinite alternate;
+#typedText, #typedText2 {
+  font-size: 1.2em;
+  color: white;
+  min-height: 160px;
+  white-space: pre-line;
 }
 
-#popup2 h2 { color: white; font-size: 2em; }
-#typedText2 { font-size: 1.2em; color: white; min-height: 200px; white-space: pre-line; }
+#closeBtn { background: #ff7eb9; margin-top: 20px; }
 #finalCloseBtn { background: #ff006e; margin-top: 20px; }
 
-/* Screen Flash */
+/* ============================= */
+/* FLASH */
+/* ============================= */
+
 #flash {
   position: fixed;
   top:0;
@@ -143,68 +149,8 @@ button:hover { transform: scale(1.1); }
   100% { opacity:0; }
 }
 
-/* Heart Firework */
-.firework-heart {
-  position: absolute;
-  font-size: 22px;
-  pointer-events: none;
-  animation: explode 1.2s ease-out forwards;
-}
-
-@keyframes explode {
-  0% { transform: translate(0,0) scale(1); opacity:1; }
-  100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity:0; }
-}
-
-/* Floating Hearts */
-.heart {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  background: hotpink;
-  transform: rotate(-45deg);
-  animation: float 4s linear infinite;
-  box-shadow: 0 0 15px hotpink;
-}
-
-.heart::before, .heart::after {
-  content: '';
-  width: 14px;
-  height: 14px;
-  background: hotpink;
-  border-radius: 50%;
-  position: absolute;
-  box-shadow: 0 0 15px hotpink;
-}
-
-.heart::before { top: -7px; }
-.heart::after { left: 7px; }
-
-@keyframes float {
-  from { transform: translateY(0) rotate(-45deg); opacity: 1; }
-  to { transform: translateY(-500px) rotate(-45deg); opacity: 0; }
-}
-
-/* Golden Sparkles */
-.sparkle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: gold;
-  border-radius: 50%;
-  box-shadow: 0 0 10px gold;
-  animation: sparkleFall linear infinite;
-}
-
-@keyframes sparkleFall {
-  from { transform: translateY(-10px); opacity: 1; }
-  to { transform: translateY(100vh); opacity: 0; }
-}
-
-canvas { position: fixed; top: 0; left: 0; pointer-events: none; }
-</style>
 /* ============================= */
-/* FINAL UNIVERSE PAGE CSS */
+/* FINAL UNIVERSE */
 /* ============================= */
 
 #finalUniverse {
@@ -237,7 +183,12 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; }
   from { transform: translateY(0); opacity: 1; }
   to { transform: translateY(-100vh); opacity: 0; }
 }
+
+canvas { position: fixed; top: 0; left: 0; pointer-events: none; }
+
+</style>
 </head>
+
 <body>
 
 <div id="flash"></div>
@@ -246,13 +197,9 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; }
   <source src="https://raw.githubusercontent.com/ank0809/Rose-day/db84e1f74fdef01c0b62ff2576ba8055b5e57e6e/Mere%20Naam%20Tu%20Instrumental%20Ringtone%20Download%20Pagalworld%20(mp3cut.net).mp3" type="audio/mpeg">
 </audio>
 
-<audio id="fireworkSound">
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_9b48f5e61c.mp3?filename=firework-explosion-9974.mp3" type="audio/mpeg">
-</audio>
-
 <div class="container">
   <h1>Happy Valentine’s Day 👑❤️</h1>
-  <p id="mainText">Will you be my Valentine, My Princess? 💘</p>
+  <p>Will you be my Valentine, My Princess? 💘</p>
   <button id="yesBtn">Yes 💕</button>
   <button id="noBtn">No 🙈</button><br>
   <button id="muteBtn">Mute/Unmute 🎵</button>
@@ -272,15 +219,12 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; }
 
 <canvas id="confetti"></canvas>
 
-<!-- ============================= -->
-<!-- FINAL UNIVERSE PAGE -->
-<!-- ============================= -->
-
 <div id="finalUniverse">
-  <h2>I’ll choose you in every universe 💖🌍</h2>
+  <h2>I’ll choose you in every universe 💓💫</h2>
 </div>
 
 <script>
+
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const popup = document.getElementById("popup");
@@ -288,21 +232,10 @@ const popup2 = document.getElementById("popup2");
 const typedText = document.getElementById("typedText");
 const typedText2 = document.getElementById("typedText2");
 const bgMusic = document.getElementById("bgMusic");
-const fireworkSound = document.getElementById("fireworkSound");
 const muteBtn = document.getElementById("muteBtn");
 const flash = document.getElementById("flash");
 
-const noMessages = [
-  "Are you sure? 🥺",
-  "Really sure? 👀",
-  "Think again Princess 👑",
-  "You deserve royal love 💖",
-  "Only YES suits a Queen 👑"
-];
-
-let clickCount = 0;
-
-const message = `My Princess 👑💖
+const message = `Queenieee 👑💖
 
 From the moment you came into my life,
 everything became softer and brighter ✨
@@ -325,7 +258,7 @@ today,
 tomorrow,
 and always 🤍`;
 
-const message2 = `Thank you so much for everything, my love…
+const message2 = `Thank you for everything, my love…
 
 I promise you —
 no matter what situation comes,
@@ -352,150 +285,57 @@ document.body.addEventListener("click", () => {
 
 muteBtn.onclick = () => {
   bgMusic.muted = !bgMusic.muted;
-  muteBtn.textContent = bgMusic.muted ? "Unmute 🎵" : "Mute 🎵";
 };
 
 yesBtn.onclick = openPopup;
 
 noBtn.onclick = () => {
-  if (clickCount < noMessages.length - 1) {
-    noBtn.textContent = noMessages[clickCount];
-    clickCount++;
-  } else {
-    noBtn.textContent = "Yes 👑💖";
-    noBtn.style.background = "#ff006e";
-    noBtn.onclick = openPopup;
-  }
+  noBtn.textContent = "Yes 👑💖";
+  noBtn.style.background = "#ff006e";
+  noBtn.onclick = openPopup;
 };
 
 function openPopup() {
   flash.classList.add("flash-animate");
   setTimeout(()=> flash.classList.remove("flash-animate"),400);
 
-  fireworkSound.currentTime = 0;
-  fireworkSound.play();
-
-  setTimeout(() => {
-    heartFireworkExplosion();
-  }, 200);
-
   popup.style.display = "block";
-  startTyping();
-  startConfetti();
+  startTyping(message, typedText);
   yesBtn.style.display = "none";
   noBtn.style.display = "none";
 }
 
-function startTyping() {
-  typedText.textContent = "";
+function startTyping(text, element) {
+  element.textContent = "";
   let i = 0;
   const interval = setInterval(() => {
-    typedText.textContent += message[i];
+    element.textContent += text[i];
     i++;
-    if (i >= message.length) clearInterval(interval);
+    if (i >= text.length) clearInterval(interval);
   }, 40);
 }
 
 document.getElementById("closeBtn").onclick = () => {
   popup.style.display = "none";
-  openSecondPopup();
-};
-
-function openSecondPopup() {
   popup2.style.display = "block";
-  startTyping2();
-}
-
-function startTyping2() {
-  typedText2.textContent = "";
-  let i = 0;
-  const interval = setInterval(() => {
-    typedText2.textContent += message2[i];
-    i++;
-    if (i >= message2.length) clearInterval(interval);
-  }, 40);
-}
+  startTyping(message2, typedText2);
+};
 
 document.getElementById("finalCloseBtn").onclick = () => {
   popup2.style.display = "none";
   openUniversePage();
 };
 
-function heartFireworkExplosion() {
-  const centerX = window.innerWidth / 2;
-  const centerY = window.innerHeight / 2;
-
-  for (let i = 0; i < 50; i++) {
-    const heart = document.createElement("div");
-    heart.className = "firework-heart";
-    heart.textContent = "💖";
-
-    const angle = Math.random() * 2 * Math.PI;
-    const radius = Math.random() * 250 + 50;
-
-    heart.style.left = centerX + "px";
-    heart.style.top = centerY + "px";
-    heart.style.setProperty("--x", Math.cos(angle) * radius + "px");
-    heart.style.setProperty("--y", Math.sin(angle) * radius + "px");
-
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 1200);
-  }
-}
-
 /* Confetti */
 const canvas = document.getElementById("confetti");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-let confetti = [];
 
-function startConfetti() {
-  confetti = Array.from({length: 120}, () => ({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    r: Math.random()*5+2,
-    d: Math.random()*5,
-    c: `hsl(${Math.random()*360},100%,50%)`
-  }));
-  drawConfetti();
-}
-
-function drawConfetti() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  confetti.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-    ctx.fillStyle = p.c;
-    ctx.fill();
-    p.y += p.d;
-    if(p.y>canvas.height) p.y=0;
-  });
-  requestAnimationFrame(drawConfetti);
-}
-
-/* Floating hearts */
-setInterval(() => {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.style.left = Math.random()*window.innerWidth+"px";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),4000);
-},300);
-
-/* Golden Sparkles */
-setInterval(() => {
-  const s = document.createElement("div");
-  s.className = "sparkle";
-  s.style.left = Math.random()*window.innerWidth+"px";
-  s.style.animationDuration = 5 + Math.random()*5 + "s";
-  document.body.appendChild(s);
-  setTimeout(()=>s.remove(),10000);
-},400)
-
-/* ============================= */
-/* FINAL UNIVERSE FUNCTION */
-/* ============================= */
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
 
 function openUniversePage() {
   const universe = document.getElementById("finalUniverse");
@@ -510,8 +350,9 @@ function openUniversePage() {
     universe.appendChild(heart);
     setTimeout(() => heart.remove(), 4000);
   }, 300);
-};
+}
 
 </script>
+
 </body>
 </html>
