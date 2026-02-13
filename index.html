@@ -103,27 +103,6 @@ button:hover { transform: scale(1.1); }
     opacity: 0;
   }
 }
-
-/* Final Lock Screen */
-#lockScreen {
-  display:none;
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: radial-gradient(circle, #ff006e, #8e0038);
-  z-index:500;
-  color:white;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  text-align:center;
-}
-
-#lockScreen h1 {
-  font-size:3em;
-  animation: heartbeat 1.2s infinite;
-}
 </style>
 </head>
 
@@ -148,27 +127,15 @@ button:hover { transform: scale(1.1); }
   <h2>My Forever Promise 💍❤️</h2>
   <div id="typed2"></div>
   <div id="ringContainer"></div>
-  <button id="finalBtn">Locked Together 💞</button>
-</div>
-
-<!-- Final Screen -->
-<div id="lockScreen">
-  <h1>🔒 Locked Together Forever 🔒</h1>
-  <p style="font-size:1.5em;">You & Me. Always. 💍❤️</p>
 </div>
 
 <script>
 const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-
 const popup1 = document.getElementById("popup1");
 const popup2 = document.getElementById("popup2");
-
 const typed1 = document.getElementById("typed1");
 const typed2 = document.getElementById("typed2");
-
 const ringContainer = document.getElementById("ringContainer");
-const lockScreen = document.getElementById("lockScreen");
 
 const message1 = `My Princess 👑💖
 
@@ -230,7 +197,6 @@ function typeText(text, element, isPromise=false) {
   },35);
 }
 
-/* 💍 Ring Sparkle */
 function showRing(){
   const ring=document.createElement("div");
   ring.className="ring";
@@ -238,7 +204,6 @@ function showRing(){
   ringContainer.appendChild(ring);
 }
 
-/* 🌹 Rose Petals */
 function startPetals(){
   setInterval(()=>{
     const petal=document.createElement("div");
@@ -250,12 +215,6 @@ function startPetals(){
     setTimeout(()=>petal.remove(),8000);
   },400);
 }
-
-/* 🔒 Final Screen */
-document.getElementById("finalBtn").onclick=()=>{
-  popup2.style.display="none";
-  lockScreen.style.display="flex";
-};
 </script>
 
 </body>
