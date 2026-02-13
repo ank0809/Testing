@@ -203,6 +203,40 @@ button:hover { transform: scale(1.1); }
 
 canvas { position: fixed; top: 0; left: 0; pointer-events: none; }
 </style>
+/* ============================= */
+/* FINAL UNIVERSE PAGE CSS */
+/* ============================= */
+
+#finalUniverse {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #ffd6e0, #ff8fab, #ff4d6d);
+  z-index: 500;
+  overflow: hidden;
+  text-align: center;
+}
+
+#finalUniverse h2 {
+  margin-top: 40vh;
+  font-size: 2.8em;
+  color: white;
+  text-shadow: 0 0 25px #ff006e;
+}
+
+.universe-heart {
+  position: absolute;
+  font-size: 26px;
+  animation: floatUniverse 4s linear forwards;
+}
+
+@keyframes floatUniverse {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-100vh); opacity: 0; }
+}
 </head>
 <body>
 
@@ -237,6 +271,14 @@ canvas { position: fixed; top: 0; left: 0; pointer-events: none; }
 </div>
 
 <canvas id="confetti"></canvas>
+
+<!-- ============================= -->
+<!-- FINAL UNIVERSE PAGE -->
+<!-- ============================= -->
+
+<div id="finalUniverse">
+  <h2>I’ll choose you in every universe 💖🌍</h2>
+</div>
 
 <script>
 const yesBtn = document.getElementById("yesBtn");
@@ -376,6 +418,7 @@ function startTyping2() {
 
 document.getElementById("finalCloseBtn").onclick = () => {
   popup2.style.display = "none";
+  openUniversePage();
 };
 
 function heartFireworkExplosion() {
@@ -448,7 +491,26 @@ setInterval(() => {
   s.style.animationDuration = 5 + Math.random()*5 + "s";
   document.body.appendChild(s);
   setTimeout(()=>s.remove(),10000);
-},400);
+},400)
+
+/* ============================= */
+/* FINAL UNIVERSE FUNCTION */
+/* ============================= */
+
+function openUniversePage() {
+  const universe = document.getElementById("finalUniverse");
+  universe.style.display = "block";
+
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "universe-heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.top = window.innerHeight + "px";
+    universe.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
+  }, 300);
+};
 
 </script>
 </body>
